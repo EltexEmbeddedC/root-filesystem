@@ -73,8 +73,18 @@
     ![image](https://github.com/user-attachments/assets/472a4c20-2bf0-4650-8800-2dcfcbd7f383)
   - `make install` - выполним установку:
  
-    [в процессе]
+    ![image](https://github.com/user-attachments/assets/5554b965-dc09-414c-89bf-5a97c69577b3)
 
+  - Увидим, что файлы собрались:
+
+    ![image](https://github.com/user-attachments/assets/02f65c86-4be6-4aa9-b0b4-c74856a69b1e)
+
+  - `file ./ssh` - убедимся, что файлы собраны под нужную архитектуру;
+ 
+    ![image](https://github.com/user-attachments/assets/4e760cd0-d4f9-4394-964b-4e40b8719619)
+
+  - Все получившиеся файлы будут помещены в соответствующие директории, которые получатся на следующем этапе.
+  
 ### Сборка и установка BusyBox
 
 - Перейдя в директорию с BusyBox выполним сборку под ARM: `ARCH=arm make defconfig`;
