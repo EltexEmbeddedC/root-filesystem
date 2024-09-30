@@ -114,6 +114,6 @@
 - Положим этот архив рядом с файлом ядра и dtb файлом. Таким образом, получаем прошивку;
 - `QEMU_AUDIO_DRV=none qemu-system-arm -M vexpress-a9 -kernel zImage -initrd initramfs.cpio.gz -dtb vexpress-v2p-ca9.dtb -append "console=ttyAMA0 rdinit=/bin/ash" -nographic` - запустим эмулятор и увидим, что теперь есть доступ к консоли. Проверим работу команд `ls` и `ssh`:
 
-  ![image](https://github.com/user-attachments/assets/3ca2e729-0292-4602-8e55-a97766d0743b)
+  ![image](https://github.com/user-attachments/assets/075f1e46-5716-4619-af1d-86a450f172ba)
 
 Таким образом, обе прошивки были успешно собраны и протестированы.
