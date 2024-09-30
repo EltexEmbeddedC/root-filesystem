@@ -1,4 +1,4 @@
-# Корневая файловая система
+![image](https://github.com/user-attachments/assets/977192f9-e5e2-4815-8732-ec6a4fa845e7)# Корневая файловая система
 
 Сборка ядра и dtb файла происходит в [задании 19](https://github.com/EltexEmbeddedC/cross-compilation). Для получения полной прошивки нужно также собрать корневую файловую систему.
 
@@ -34,7 +34,41 @@
 
   ![image](https://github.com/user-attachments/assets/62a01422-beef-48dc-84c2-92d0298ff648)
 
-## Сборка корневой файловой системы на основе BusyBox
+## Сборка корневой файловой системы на основе BusyBox и включение в неё OpenSSH
+
+### Сборка OpenSSH
+
+- Склонируем репозиторий с [OpenSSH](https://github.com/openssh/openssh-portable), а также [zlib](https://github.com/madler/zlib) и [OpenSSL](https://github.com/openssl/openssl), необходимых для сборки;
+- Соберем zlib:
+  - `CC=arm-linux-gnueabihf-gcc ./configure --static --prefix=$PWD/_install` - выполним конфигурацию Makefile:
+
+    ![image](https://github.com/user-attachments/assets/3ed02d45-6931-4a5d-b8e9-c9b4ace9712f)
+  - `make -j<число ядер>` - выполним сборку:
+
+    ![image](https://github.com/user-attachments/assets/831ef48b-b1e1-40d9-aafa-baf96d6c15e5)
+
+  - `make install` - выполним установку:
+
+    ![image](https://github.com/user-attachments/assets/0aa1e6c0-4983-4bfc-a03a-68000ed0b932)
+
+- Соберем OpenSSL:
+  - `./Configure linux-armv4 shared --cross-compile-prefix=arm-linux-gnueabihf- --prefix=$PWD/_include` - выполним конфигурацию под целевую платформу:
+
+    ![image](https://github.com/user-attachments/assets/b9b50acf-1480-4c39-98f9-867a5c85bdd9)
+  - `make -j<число ядер>` - выполним сборку:
+
+    ![image](https://github.com/user-attachments/assets/ab8e3214-78b4-4797-b912-fe6112d126b7)
+
+  - `make install` - выполним установку:
+ 
+    ![image](https://github.com/user-attachments/assets/c5e4ea32-6dae-4de7-865c-3f0dd6682eaa)
+
+- Выполним сборку OpenSSH:
+
+  [в процессе]
+
+
+### Сборка и установка BusyBox
 
 - Перейдя в директорию с BusyBox выполним сборку под ARM: `ARCH=arm make defconfig`;
 
