@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/977192f9-e5e2-4815-8732-ec6a4fa845e7)# Корневая файловая система
+# Корневая файловая система
 
 Сборка ядра и dtb файла происходит в [задании 19](https://github.com/EltexEmbeddedC/cross-compilation). Для получения полной прошивки нужно также собрать корневую файловую систему.
 
@@ -83,7 +83,9 @@
  
     ![image](https://github.com/user-attachments/assets/4e760cd0-d4f9-4394-964b-4e40b8719619)
 
-  - Все получившиеся файлы будут помещены в соответствующие директории, которые получатся на следующем этапе.
+  - Все получившиеся файлы будут помещены в соответствующие директории, которые получатся на следующем этапе;
+ 
+  - Запуск `ssh` также будет проведен ниже.
   
 ### Сборка и установка BusyBox
 
@@ -110,8 +112,8 @@
 
 - `find . | cpio -o -H newc | gzip > initramfs.cpio.gz` - выполним сборку архива, перейдя в папку `/_install` из корневой директории BusyBox;
 - Положим этот архив рядом с файлом ядра и dtb файлом. Таким образом, получаем прошивку;
-- `QEMU_AUDIO_DRV=none qemu-system-arm -M vexpress-a9 -kernel zImage -initrd initramfs.cpio.gz -dtb vexpress-v2p-ca9.dtb -append "console=ttyAMA0 rdinit=/bin/ash" -nographic` - запустим эмулятор и увидим, что теперь есть доступ к консоли:
+- `QEMU_AUDIO_DRV=none qemu-system-arm -M vexpress-a9 -kernel zImage -initrd initramfs.cpio.gz -dtb vexpress-v2p-ca9.dtb -append "console=ttyAMA0 rdinit=/bin/ash" -nographic` - запустим эмулятор и увидим, что теперь есть доступ к консоли. Проверим работу команд `ls` и `ssh`:
 
-  ![image](https://github.com/user-attachments/assets/a5d33a8c-edab-4e0e-9763-4e06b42d4bbb)
+  ![image](https://github.com/user-attachments/assets/3ca2e729-0292-4602-8e55-a97766d0743b)
 
 Таким образом, обе прошивки были успешно собраны и протестированы.
