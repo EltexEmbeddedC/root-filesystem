@@ -65,8 +65,15 @@
 
 - Выполним сборку OpenSSH:
 
-  [в процессе]
+  - `./configure --prefix=$PWD/_install --disable-strip --with-zlib=$PWD/../zlib/_install --with-ssl-dir=$PWD/openssl/../_include --host=arm-linux-gnueabihf` - выполним конфигурацию под целевую платформу:
 
+    ![image](https://github.com/user-attachments/assets/e4ccf106-5ce8-4b45-8bf9-10c7344183aa)
+  - `make -j <число ядер>` - выполним сборку:
+
+    ![image](https://github.com/user-attachments/assets/472a4c20-2bf0-4650-8800-2dcfcbd7f383)
+  - `make install` - выполним установку:
+ 
+    [в процессе]
 
 ### Сборка и установка BusyBox
 
