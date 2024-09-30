@@ -38,12 +38,12 @@
 
 ### Сборка OpenSSH
 
-- Склонируем репозиторий с [OpenSSH](https://github.com/openssh/openssh-portable), а также [zlib](https://github.com/madler/zlib) и [OpenSSL](https://github.com/openssl/openssl), необходимых для сборки;
+- Склонируем репозитории [OpenSSH](https://github.com/openssh/openssh-portable), а также [zlib](https://github.com/madler/zlib) и [OpenSSL](https://github.com/openssl/openssl), необходимые для сборки;
 - Соберем zlib:
   - `CC=arm-linux-gnueabihf-gcc ./configure --static --prefix=$PWD/_install` - выполним конфигурацию Makefile:
 
     ![image](https://github.com/user-attachments/assets/3ed02d45-6931-4a5d-b8e9-c9b4ace9712f)
-  - `make -j<число ядер>` - выполним сборку:
+  - `make -j <число ядер>` - выполним сборку:
 
     ![image](https://github.com/user-attachments/assets/831ef48b-b1e1-40d9-aafa-baf96d6c15e5)
 
@@ -55,7 +55,7 @@
   - `./Configure linux-armv4 shared --cross-compile-prefix=arm-linux-gnueabihf- --prefix=$PWD/_include` - выполним конфигурацию под целевую платформу:
 
     ![image](https://github.com/user-attachments/assets/b9b50acf-1480-4c39-98f9-867a5c85bdd9)
-  - `make -j<число ядер>` - выполним сборку:
+  - `make -j <число ядер>` - выполним сборку:
 
     ![image](https://github.com/user-attachments/assets/ab8e3214-78b4-4797-b912-fe6112d126b7)
 
@@ -65,10 +65,10 @@
 
 - Выполним сборку OpenSSH:
 
-  - `./configure --prefix=$PWD/_install --disable-strip --with-zlib=$PWD/../zlib/_install --with-ssl-dir=$PWD/openssl/../_include --host=arm-linux-gnueabihf` - выполним конфигурацию под целевую платформу:
+  - `./configure --prefix=$PWD/_install --disable-strip --with-zlib=$PWD/../zlib/_install --with-ssl-dir=$PWD/../openssl/_include --host=arm-linux-gnueabihf` - выполним конфигурацию под целевую платформу:
 
     ![image](https://github.com/user-attachments/assets/e4ccf106-5ce8-4b45-8bf9-10c7344183aa)
-  - `make -j <число ядер>` - выполним сборку:
+  - `make` - выполним сборку:
 
     ![image](https://github.com/user-attachments/assets/472a4c20-2bf0-4650-8800-2dcfcbd7f383)
   - `make install` - выполним установку:
@@ -78,10 +78,6 @@
   - Увидим, что файлы собрались:
 
     ![image](https://github.com/user-attachments/assets/02f65c86-4be6-4aa9-b0b4-c74856a69b1e)
-
-  - `file ./ssh` - убедимся, что файлы собраны под нужную архитектуру;
- 
-    ![image](https://github.com/user-attachments/assets/4e760cd0-d4f9-4394-964b-4e40b8719619)
 
   - Все получившиеся файлы будут помещены в соответствующие директории, которые получатся на следующем этапе;
  
