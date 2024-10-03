@@ -108,8 +108,8 @@
 
 - `find . | cpio -o -H newc | gzip > initramfs.cpio.gz` - выполним сборку архива, перейдя в папку `/_install` из корневой директории BusyBox;
 - Положим этот архив рядом с файлом ядра и dtb файлом. Таким образом, получаем прошивку;
-- `QEMU_AUDIO_DRV=none qemu-system-arm -M vexpress-a9 -kernel zImage -initrd initramfs.cpio.gz -dtb vexpress-v2p-ca9.dtb -append "console=ttyAMA0 rdinit=/bin/ash" -nographic` - запустим эмулятор и увидим, что теперь есть доступ к консоли. Проверим работу команд `ls` и `ssh`:
+- `QEMU_AUDIO_DRV=none qemu-system-arm -M vexpress-a9 -kernel zImage -initrd initramfs.cpio.gz -dtb vexpress-v2p-ca9.dtb -append "console=ttyAMA0 rdinit=/bin/ash" -nographic` - запустим эмулятор и увидим, что теперь есть доступ к консоли. Проверим работу команд `echo` и `ssh`:
 
-  ![image](https://github.com/user-attachments/assets/075f1e46-5716-4619-af1d-86a450f172ba)
+  ![image](https://github.com/user-attachments/assets/1ac6c894-391d-459e-8420-9550a0dbf5d2)
 
 Таким образом, обе прошивки были успешно собраны и протестированы.
