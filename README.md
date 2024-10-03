@@ -113,3 +113,162 @@
   ![image](https://github.com/user-attachments/assets/1ac6c894-391d-459e-8420-9550a0dbf5d2)
 
 Таким образом, обе прошивки были успешно собраны и протестированы.
+
+## Доп. задание: сборка и запуск U-Boot под ARM
+
+1. Склонируем репозиторий по ссылке ([ссылка](https://github.com/u-boot/u-boot));
+2. `ARCH=arm make qemu_arm_defconfig` - создадим конфигурацию;
+
+   ![image](https://github.com/user-attachments/assets/992d5d4c-3914-4f77-b39e-316dacde37a5)
+3. `ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- make -j <число ядер>` - выполним сборку;
+
+   ![image](https://github.com/user-attachments/assets/271c0be4-ac8b-4c38-b73c-a66b6f9f9cda)
+4. `QEMU_AUDIO_DRU=none qemu-system-arm -M virt -bios u-boot.bin -nographic` - запустим U-Boot. Так как рядом с загрузчиком ничего нет, то запустится только его терминал, где можно, к примеру, вывести переменные среды окружения (`env print`) или список доступных команд (`help`)
+
+   ![image](https://github.com/user-attachments/assets/b735c44a-0933-49ce-b66e-44bb6e8a67f8)
+
+<details>
+
+<summary>=> env print</summary>
+
+```
+arch=arm
+baudrate=115200
+board=qemu-arm
+board_name=qemu-arm
+boot_targets=qfw usb scsi virtio nvme dhcp
+bootcmd=bootflow scan -lb
+bootdelay=2
+cpu=armv7
+ethaddr=52:54:00:12:34:56
+fdt_addr=0x40000000
+fdt_high=0xffffffff
+fdtcontroladdr=465ddea0
+initrd_high=0xffffffff
+kernel_addr_r=0x40400000
+loadaddr=0x40200000
+preboot=usb start
+pxefile_addr_r=0x40300000
+ramdisk_addr_r=0x44000000
+scriptaddr=0x40200000
+stderr=serial,vidconsole
+stdin=serial,usbkbd
+stdout=serial,vidconsole
+usb_ignorelist=0x1050:*,
+vendor=emulation
+```
+
+</details>
+
+<details>
+
+<summary>=> help</summary>
+
+```
+?         - alias for 'help'
+base      - print or set address offset
+bdinfo    - print Board Info structure
+blkcache  - block cache diagnostics and control
+boot      - boot default, i.e., run 'bootcmd'
+bootd     - boot default, i.e., run 'bootcmd'
+bootdev   - Boot devices
+bootefi   - Boots an EFI payload from memory
+bootelf   - Boot from an ELF image in memory
+bootflow  - Boot flows
+bootm     - boot application image from memory
+bootmeth  - Boot methods
+bootp     - boot image via network using BOOTP/TFTP protocol
+bootvx    - Boot vxWorks from an ELF image
+bootz     - boot Linux zImage image from memory
+chpart    - change active partition of a MTD device
+cls       - clear screen
+cmp       - memory compare
+coninfo   - print console devices and information
+cp        - memory copy
+crc32     - checksum calculation
+date      - get/set/reset date & time
+dfu       - Device Firmware Upgrade
+dhcp      - boot image via network using DHCP/TFTP protocol
+dm        - Driver model low level access
+echo      - echo args to console
+editenv   - edit environment variable
+eficonfig - provide menu-driven UEFI variable maintenance interface
+env       - environment handling commands
+erase     - erase FLASH memory
+exit      - exit script
+ext2load  - load binary file from a Ext2 filesystem
+ext2ls    - list files in a directory (default /)
+ext4load  - load binary file from a Ext4 filesystem
+ext4ls    - list files in a directory (default /)
+ext4size  - determine a file's size
+false     - do nothing, unsuccessfully
+fatinfo   - print information about filesystem
+fatload   - load binary file from a dos filesystem
+fatls     - list files in a directory (default /)
+fatmkdir  - create a directory
+fatrm     - delete a file
+fatsize   - determine a file's size
+fatwrite  - write file into a dos filesystem
+fdt       - flattened device tree utility commands
+flinfo    - print FLASH memory information
+fstype    - Look up a filesystem type
+fstypes   - List supported filesystem types
+go        - start application at address 'addr'
+help      - print command description/usage
+iminfo    - print header information for application image
+imxtract  - extract a part of a multi-image
+itest     - return true/false on integer compare
+lcdputs   - print string on video framebuffer
+ln        - Create a symbolic link
+load      - load binary file from a filesystem
+loadb     - load binary file over serial line (kermit mode)
+loads     - load S-Record file over serial line
+loadx     - load binary file over serial line (xmodem mode)
+loady     - load binary file over serial line (ymodem mode)
+loop      - infinite loop on address range
+ls        - list files in a directory (default /)
+md        - memory display
+mii       - MII utility commands
+mm        - memory modify (auto-incrementing address)
+mtd       - MTD utils
+mtdparts  - define flash/nand partitions
+mw        - memory write (fill)
+net       - NET sub-system
+nm        - memory modify (constant address)
+nvme      - NVM Express sub-system
+panic     - Panic with optional message
+part      - disk partition related commands
+pci       - list and access PCI Configuration Space
+ping      - send ICMP ECHO_REQUEST to network host
+poweroff  - Perform POWEROFF of the device
+printenv  - print environment variables
+protect   - enable or disable FLASH write protection
+pxe       - get and boot from pxe files
+qfw       - QEMU firmware interface
+random    - fill memory with random pattern
+reset     - Perform RESET of the CPU
+run       - run commands in an environment variable
+save      - save file to a filesystem
+saveenv   - save environment variables to persistent storage
+scsi      - SCSI sub-system
+scsiboot  - boot from SCSI device
+setcurs   - set cursor position within screen
+setenv    - set environment variables
+setexpr   - set environment variable as the result of eval expression
+showvar   - print local hushshell variables
+size      - determine a file's size
+sleep     - delay execution for some time
+source    - run script from memory
+test      - minimal test like /bin/sh
+tftpboot  - load file via network using TFTP protocol
+tpm       - Issue a TPMv1.x command
+tpm2      - Issue a TPMv2.x command
+true      - do nothing, successfully
+usb       - USB sub-system
+usbboot   - boot from USB device
+vbe       - Verified Boot for Embedded
+version   - print monitor, compiler and linker version
+virtio    - virtio block devices sub-system
+```
+
+</details>
