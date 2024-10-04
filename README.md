@@ -85,7 +85,7 @@
   
 ### Сборка и установка BusyBox
 
-- Перейдя в директорию с BusyBox выполним сборку под ARM: `ARCH=arm make defconfig`;
+- Перейдя в директорию с BusyBox, выполним сборку под ARM: `ARCH=arm make defconfig`;
 
   ![image](https://github.com/user-attachments/assets/40ce7d73-9356-4bee-9ffb-2b00e828768e)
 
