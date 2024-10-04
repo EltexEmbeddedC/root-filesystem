@@ -110,7 +110,7 @@
 - Положим этот архив рядом с файлом ядра и dtb файлом. Таким образом, получаем прошивку;
 - `QEMU_AUDIO_DRV=none qemu-system-arm -M vexpress-a9 -kernel zImage -initrd initramfs.cpio.gz -dtb vexpress-v2p-ca9.dtb -append "console=ttyAMA0 rdinit=/bin/ash" -nographic` - запустим эмулятор и увидим, что теперь есть доступ к консоли. Проверим работу команд `echo` и `ssh` (предварительно была проведена настройка `ssh` на платформе назначения, основная часть которой состояла в генерации ключа с помощью `ssh-keygen`):
 
-  ![image](https://github.com/user-attachments/assets/1ac6c894-391d-459e-8420-9550a0dbf5d2)
+  ![image](https://github.com/user-attachments/assets/1ac6c894-391d-459e-8420-9550a0dbf5d22)
 
 Таким образом, обе прошивки были успешно собраны и протестированы.
 
@@ -125,7 +125,7 @@
    ![image](https://github.com/user-attachments/assets/271c0be4-ac8b-4c38-b73c-a66b6f9f9cda)
 4. `QEMU_AUDIO_DRU=none qemu-system-arm -M virt -bios u-boot.bin -nographic` - запустим U-Boot. Так как рядом с загрузчиком ничего нет, то запустится только его терминал, где можно, к примеру, вывести переменные среды окружения (`env print`) или список доступных команд (`help`).
 
-   ![image](https://github.com/user-attachments/assets/b735c44a-0933-49ce-b66e-44bb6e8a67f89)
+   ![image](https://github.com/user-attachments/assets/b735c44a-0933-49ce-b66e-44bb6e8a67f8)
 
 <details>
 
