@@ -114,7 +114,7 @@
 
 Таким образом, обе прошивки были успешно собраны и протестированы.
 
-## Доп. задание: сборка и запуск U-Boot под ARM
+## Сборка и запуск U-Boot под ARM
 
 1. Склонируем репозиторий по ссылке ([ссылка](https://github.com/u-boot/u-boot));
 2. `ARCH=arm make qemu_arm_defconfig` - создадим конфигурацию;
@@ -123,7 +123,7 @@
 3. `ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- make -j <число ядер>` - выполним сборку;
 
    ![image](https://github.com/user-attachments/assets/271c0be4-ac8b-4c38-b73c-a66b6f9f9cda)
-4. `QEMU_AUDIO_DRU=none qemu-system-arm -M virt -bios u-boot.bin -nographic` - запустим U-Boot. Так как рядом с загрузчиком ничего нет, то запустится только его терминал, где можно, к примеру, вывести переменные среды окружения (`env print`) или список доступных команд (`help`)
+4. `QEMU_AUDIO_DRU=none qemu-system-arm -M virt -bios u-boot.bin -nographic` - запустим U-Boot. Так как рядом с загрузчиком ничего нет, то запустится только его терминал, где можно, к примеру, вывести переменные среды окружения (`env print`) или список доступных команд (`help`).
 
    ![image](https://github.com/user-attachments/assets/b735c44a-0933-49ce-b66e-44bb6e8a67f8)
 
